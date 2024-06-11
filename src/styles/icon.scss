@@ -1,0 +1,57 @@
+.icon {
+  width: $icon-size;
+  height: $icon-size;
+  border-radius: $icon-size;
+
+  &--calorie {
+    background: $calorie url("images/svg/calorie.svg") no-repeat center;
+  }
+
+  &--time {
+    background: $time url("images/svg/time.svg") no-repeat center;
+  }
+
+  &--mass {
+    background: $mass url("images/svg/mass.svg") no-repeat center;
+  }
+
+  &--sm {
+    width: $icon-size-sm;
+    height: $icon-size-sm;
+    border-radius: $icon-size-sm;
+    background-size: rem(8);
+  }
+
+  &--remove,
+  &--add {
+    position: relative;
+    background: $controls;
+    transition: opacity $trans-dur;
+
+    &::before {
+      content: "";
+      width: rem(10);
+      height: rem(2);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-top: rem(-1);
+      margin-left: rem(-5);
+      background: $grey-4;
+    }
+  }
+
+  &--add {
+    &::after {
+      content: "";
+      width: rem(2);
+      height: rem(10);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-top: rem(-5);
+      margin-left: rem(-1);
+      background: $grey-4;
+    }
+  }
+}

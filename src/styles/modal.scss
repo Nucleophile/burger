@@ -1,0 +1,118 @@
+@import "../../node_modules/bootstrap/scss/functions";
+@import "../../node_modules/bootstrap/scss/variables";
+@import "../../node_modules/bootstrap/scss/mixins/clearfix";
+@import "../../node_modules/bootstrap/scss/mixins/transition";
+@import "../../node_modules/bootstrap/scss/mixins/";
+@import "../../node_modules/bootstrap/scss/modal";
+
+.modal {
+  --bs-modal-bg: #fff;
+  --bs-modal-border-radius: #{rem(50)};
+  --bs-modal-header-padding: #{rem(60)};
+
+  @include media(from_laptop) {
+    --bs-modal-width: #{rem(1200)};
+  }
+
+  @include media(mobile) {
+    .burger-for-modal {
+      display: none;
+    }
+    &-content {
+      @include media(mobile) {
+        background-image: url(./images/svg/burger-background-1.svg);
+        background-position: center;
+        background-size: 90%;
+        background-repeat: no-repeat;
+      }
+    }
+  }
+
+  &-header {
+    .btn-close {
+      margin: 0;
+      position: absolute;
+      top: rem(40);
+      right: rem(40);
+      z-index: 1;
+      width: rem(40);
+      height: rem(40);
+      border: none;
+      background: none;
+
+      &::before,
+      &::after {
+        content: "";
+        width: rem(50);
+        height: rem(8);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: rem(-2);
+        margin-left: rem(-25);
+        background: $grey-4;
+      }
+
+      &::before {
+        transform: rotate(45deg);
+      }
+
+      &::after {
+        transform: rotate(-45deg);
+      }
+    }
+  }
+
+  &-order {
+    &__heading {
+      margin-bottom: rem(145);
+
+      @include media(mobile) {
+        margin-bottom: rem(96);
+      }
+    }
+  }
+
+  &-success {
+    &__heading {
+      margin-bottom: rem(60);
+    }
+  }
+
+  &-burger-body {
+    @include media(from_tablet) {
+      margin-top: rem(-80);
+    }
+  }
+
+  &__form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: rem(18);
+  }
+
+  &__content {
+    text-align: center;
+
+    @include media(from_tablet) {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+    }
+  }
+
+  &__order-content {
+    max-width: rem(720);
+  }
+
+  &__success-content {
+    max-width: rem(980);
+  }
+
+  &__burger-container {
+    margin: 0 auto;
+  }
+}

@@ -1,0 +1,129 @@
+.header {
+  padding: $header-padding 0;
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  background: #fff;
+
+  &__content,
+  &__left-part,
+  &__right-part {
+    display: flex;
+    align-items: center;
+  }
+
+  @include media(to_laptop) {
+    &__content {
+      justify-content: space-between;
+    }
+
+    &__nav {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    &__tab {
+      font-size: rem(24);
+      line-height: rem(22);
+    }
+  }
+
+  &__right-part {
+    gap: rem(60);
+
+    @include media(to_laptop) {
+      margin-top: $header-padding;
+      position: absolute;
+      top: $logo-mobile-height + $header-padding * 2;
+    }
+  }
+
+  &__phone {
+    font-size: rem(16);
+    line-height: rem(19);
+    color: inherit;
+  }
+}
+
+.logo {
+  margin-right: rem(76);
+  position: relative;
+  z-index: 2;
+  cursor: pointer;
+
+  &__img {
+    max-width: 100%;
+  }
+
+  @include media(to_laptop) {
+    max-width: $logo-mobile-height;
+  }
+}
+
+.mob-menu {
+  flex-grow: 1;
+  display: flex;
+  justify-content: space-between;
+
+  @include media(to_laptop) {
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #fff;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+    padding: $logo-mobile-height + $header-padding * 3 + rem(35) + rem(20) $grid-gutter $grid-gutter; // 35 - Call Me Back button height; 20 - additional space
+    transform: translateX(-100%);
+    transition: transform $trans-dur;
+
+    &.opened {
+      transform: translateX(0);
+    }
+  }
+
+  &-btn {
+    width: $mob-menu-btn-width;
+    height: $mob-menu-btn-height;
+    position: relative;
+    z-index: 1;
+    padding: 0;
+    background: none;
+    border: 0;
+    cursor: pointer;
+
+    &-div,
+    &-div::before,
+    &-div::after {
+      height: $mob-menu-btn-lines-height;
+      border-radius: rem(1);
+      background: $mob-menu-btn;
+      position: absolute;
+      right: 0;
+    }
+
+    &-div {
+      top: ($mob-menu-btn-height - $mob-menu-btn-lines-height) * 0.5;
+      width: 100%;
+    }
+
+    &-div::before,
+    &-div::after {
+      content: "";
+      display: block;
+    }
+
+    &-div::before {
+      top: -($mob-menu-btn-height - $mob-menu-btn-lines-height) * 0.5;
+      width: 75%;
+    }
+
+    &-div::after {
+      top: ($mob-menu-btn-height - $mob-menu-btn-lines-height) * 0.5;
+      width: 75%;
+    }
+  }
+}

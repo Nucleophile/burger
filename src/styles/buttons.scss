@@ -1,0 +1,59 @@
+.btn {
+  display: inline-block;
+  font-family: "TT Norms Pro", sans-serif;
+  font-size: rem(16);
+  font-weight: 500;
+  line-height: rem(19);
+  padding: rem(8) rem(24);
+  border: none;
+  border-radius: rem(35);
+  background: #ffeded;
+  color: #ff4d4f;
+  cursor: pointer;
+  transition-property: color, background-color;
+  transition-duration: $trans-dur;
+
+  &:hover,
+  &:focus {
+    background: $main-btn;
+    color: #fff;
+  }
+
+  &--big {
+    font-size: rem(36);
+    line-height: rem(43);
+    font-weight: 800;
+    font-style: italic;
+    padding: rem(12) rem(24);
+    background: $main-btn;
+    color: #fff;
+
+    &:hover,
+    &:focus {
+      background: $price;
+    }
+
+    &:disabled {
+      background: $grey-2;
+      cursor: not-allowed;
+    }
+  }
+
+  &--styleless {
+    border: none;
+    background: none;
+  }
+
+  &--cta {
+    font-size: rem(12);
+    line-height: rem(18);
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #fff;
+    width: rem(90);
+    height: rem(90);
+    border-radius: rem(90);
+    padding: rem(10);
+    background: $make-burger-btn-bg;
+  }
+}

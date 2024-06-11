@@ -1,0 +1,18 @@
+@import "../../node_modules/bootstrap/scss/nav";
+
+.nav {
+  gap: rem(60);
+}
+
+.tab {
+  font-size: rem(16);
+  line-height: rem(22);
+  padding: rem(10) 0;
+  cursor: pointer;
+
+  &.active {
+    font-weight: 500;
+    text-decoration: $tab-active underline rem(2);
+    text-underline-offset: rem(11);
+  }
+}

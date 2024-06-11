@@ -1,0 +1,47 @@
+// Breakpoints
+$tablet: rem(768);
+$laptop: rem(1024);
+$desktop: rem(1360);
+
+// Colors
+$text-color: #1f2939;
+$calorie: #f45763;
+$time: #6b56f5;
+$mass: #f58f56;
+$main-btn: #be2b20;
+$accent: #ff4d4f;
+$input-bg: #ffeded;
+$input-text: $accent;
+$price: #5243c2;
+$tab-active: $price;
+$make-burger-btn-bg: $price;
+$grey-1: #f0f7fa;
+$grey-2: #f5f5ff;
+$grey-3: #676D77;
+$grey-4: #949ba6;
+$mob-menu-btn: #2e3a59;
+$controls: $grey-2;
+
+// Various dimensions
+$grid-gutter: rem(24);
+$ingredient-cards-gutter: rem(100);
+$max-content: rem(1480);
+$max-container: $max-content + $grid-gutter * 2;
+$header-max-content: rem(1856);
+$header-max-container: $header-max-content + $grid-gutter * 2;
+$icon-size: rem(32);
+$icon-size-sm: rem(16);
+$badge-pad: rem(10);
+$badge-pad-sm: rem(7);
+$badge-border: rem(2);
+$badge-border-sm: rem(1);
+$burger-max-width: 598px; // burger-background-2.svg width
+$burger-parallaxed-max-width: 721px; // burger-background-1.svg width
+$logo-mobile-height: rem(60);
+$header-padding: rem(25);
+$mob-menu-btn-width: rem(18);
+$mob-menu-btn-height: rem(12);
+$mob-menu-btn-lines-height: rem(2);
+
+//Transitions
+$trans-dur: .3s;

@@ -1,0 +1,139 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  display: block;
+}
+
+body {
+  font-family: "TT Norms Pro", sans-serif;
+  font-size: rem(20);
+  line-height: rem(32);
+  color: $text-color;
+}
+
+h1 {
+  font-size: rem(72);
+  line-height: rem(80);
+  font-weight: 500;
+
+  @include media(to_laptop) {
+    font-size: rem(48);
+    line-height: rem(58);
+  }
+}
+
+h2 {
+  font-size: rem(36);
+  line-height: rem(43);
+  font-weight: 400;
+}
+
+.text-input {
+  font-size: rem(16);
+  line-height: rem(20);
+  padding: rem(20) rem(24);
+  border-radius: rem(60);
+  border: none;
+  width: 100%;
+  color: $input-text;
+  background: $input-bg;
+}
+
+.accent {
+  font-weight: 700;
+  color: $accent;
+
+  &--big {
+    font-size: rem(36);
+    line-height: rem(43);
+    text-transform: uppercase;
+  }
+
+  &--small {
+    color: $grey-4;
+    font-weight: 400;
+  }
+}
+
+.tooltip {
+  font-size: rem(18);
+  line-height: rem(22);
+  padding: rem(15) rem(32);
+  border-radius: rem(52);
+  background: #fff;
+  box-shadow: 0px 20px 50px 0px #00000040;
+
+  &::before {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: rem(32);
+    border-bottom: rem(8) solid #fff;
+    border-left: rem(8) solid transparent;
+    border-right: rem(8) solid transparent;
+  }
+}
+
+.align-helper {
+  display: flex;
+  align-items: center;
+}
+
+.container {
+  max-width: $max-container + $ingredient-cards-gutter * 2;
+  margin: 0 auto;
+  padding: 0 $grid-gutter;
+
+  @include media(from_tablet) {
+    padding-left: $ingredient-cards-gutter;
+    padding-right: $ingredient-cards-gutter;
+  }
+}
+
+.header-container {
+  max-width: $header-max-container;
+}
+
+.visible-xs,
+.visible-sm,
+.visible-lg,
+.visible-xl {
+  display: none;
+}
+
+@include media(laptop) {
+  .hidden-lg {
+    display: none;
+  }
+}
+
+@include media(tablet) {
+  .visible-sm {
+    display: block;
+  }
+
+  .hidden-sm {
+    display: none !important;
+  }
+}
+@include media(mobile) {
+  .visible-xs {
+    display: block;
+  }
+
+  .hidden-xs {
+    display: none !important;
+  }
+}

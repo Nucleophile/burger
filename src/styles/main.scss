@@ -1,0 +1,181 @@
+@use "sass:math";
+
+.burger-parallax-container {
+  @include media(from_laptop) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.burger-parallax {
+  @include media(from_laptop) {
+    padding: rem(150) 0 rem(120);
+
+    &__description {
+      max-width: rem(490);
+      margin-top: rem(-125);
+    }
+  }
+
+  @include media(to_laptop) {
+    &__description {
+      margin-bottom: 25%;
+    }
+  }
+
+  &__text {
+    color: $grey-3;
+  }
+}
+
+.make-burger {
+  padding-top: rem(30);
+  position: relative;
+  z-index: 2;
+
+  @include media(to_laptop) {
+    padding-top: rem(70);
+  }
+}
+
+.order-btn {
+  @include media(to_laptop) {
+    position: absolute;
+    bottom: rem(10);
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .modal & {
+    display: none;
+  }
+}
+
+.ingredient-cards-container {
+  display: flex;
+  justify-content: center;
+
+  @include media(mobile) {
+    padding-bottom: rem(30);
+  }
+}
+
+.ingredient-cards {
+  display: flex;
+  gap: rem(32);
+  overflow: auto;
+
+  @include media(from_tablet) {
+    padding: rem(150) $ingredient-cards-gutter;
+    margin: rem(-125) (-$ingredient-cards-gutter) rem(-150);
+  }
+}
+
+.burger-section {
+  @include media(from_laptop) {
+    display: flex;
+    gap: math.div(40, 1480) * 100%;
+  }
+}
+
+.summary,
+.burger__heading {
+  margin-top: rem(12);
+
+  @include media(from_laptop) {
+    margin-top: rem(165);
+  }
+}
+
+.summary {
+  &__heading {
+    margin-bottom: rem(24);
+  }
+
+  &__info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: rem(12);
+    margin-bottom: rem(16);
+
+    @include media(from_laptop) {
+      margin-bottom: rem(55);
+    }
+
+    @include media(to_laptop) {
+      justify-content: center;
+    }
+  }
+
+  @include media(from_laptop) {
+    width: 26%;
+  }
+}
+
+.price-block {
+  font-size: rem(24);
+  line-height: rem(29);
+  position: relative;
+
+  @include media(from_laptop) {
+    display: flex;
+    align-items: start;
+    gap: rem(24);
+  }
+
+  @include media(to_laptop) {
+    text-align: center;
+  }
+}
+
+.price-align-helper {
+  min-height: rem(67);
+}
+
+.price-label {
+  background: $price;
+  cursor: default;
+  @include media(from_laptop) {
+    margin-left: rem(-170);
+  }
+
+  &:hover,
+  &:focus {
+    background: $price;
+  }
+}
+
+.gift-block {
+  display: none;
+  width: 100%;
+
+  &__content {
+    @include media(to_laptop) {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: rem(10);
+    }
+  }
+
+  .gift-winned & {
+    display: block;
+  }
+
+  &__img-container {
+    display: flex;
+    justify-content: end;
+  }
+}
+
+.gift-message {
+  @include media(to_laptop) {
+    display: flex;
+    justify-content: center;
+  }
+
+  .gift-winned & {
+    display: none;
+  }
+}

@@ -1,0 +1,21 @@
+.badge {
+  display: flex;
+  align-items: center;
+  gap: rem(8);
+  font-size: rem(16);
+  line-height: rem(19);
+  padding: $badge-pad $badge-pad + rem(5);
+  border: $badge-border solid $grey-1;
+  border-radius: $icon-size + $badge-pad + $badge-border;
+
+  &--sm {
+    font-size: rem(12);
+    line-height: rem(16);
+    border-width: $badge-border-sm;
+    padding: $badge-pad-sm $badge-pad-sm + rem(5);
+  }
+
+  &--filled {
+    background: $grey-1;
+  }
+}

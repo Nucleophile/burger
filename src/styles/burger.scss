@@ -1,0 +1,416 @@
+@use "sass:math";
+
+.burger-parallaxed-container,
+.burger-container {
+  width: 100%;
+}
+
+.burger-parallaxed-container {
+  position: relative;
+  max-width: $burger-parallaxed-max-width;
+
+  @include media(to_laptop) {
+    margin: 0 auto;
+  }
+}
+
+.burger-parallaxed-space-former,
+.burger-space-former {
+  position: relative;
+}
+
+.burger-parallaxed-space-former {
+  padding-top: math.div(639px, $burger-parallaxed-max-width) * 100%;
+}
+
+.burger-parallaxed-content,
+.burger-content {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.burger-parallaxed-content {
+  height: 100%;
+  bottom: 10%;
+}
+
+.burger-parallaxed,
+.burger {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: end;
+  align-items: center;
+
+  &::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    background: url("images/svg/burger-background-1.svg") center/contain no-repeat;
+  }
+}
+
+.burger-parallaxed {
+  height: 100%;
+
+  &::before {
+    padding-top: math.div(639px, $burger-parallaxed-max-width) * 100%;
+    bottom: -10%;
+  }
+
+  &__heading {
+    margin-bottom: rem(16);
+  }
+}
+
+.burger-parallaxed__emoji {
+  position: absolute;
+  z-index: 1;
+
+  &-1 {
+    font-size: rem(52);
+    bottom: 65%;
+    left: 78%;
+  }
+  &-2 {
+    font-size: rem(25);
+    bottom: 72%;
+    left: 13%;
+    transform: rotate(-20deg);
+  }
+  &-3 {
+    font-size: rem(25);
+    bottom: 47%;
+    left: 91%;
+    transform: rotate(12deg);
+  }
+  &-4 {
+    font-size: rem(52);
+    bottom: 13%;
+    left: 13%;
+    transform: rotate(16deg);
+  }
+}
+
+.make-burger-btn {
+  position: absolute;
+  bottom: 30%;
+  left: -2%;
+  z-index: 2;
+}
+
+.component {
+  position: relative;
+  z-index: 1;
+  transition: transform $trans-dur;
+
+  &__img {
+    max-width: 100%;
+  }
+}
+
+.component-bun-bottom {
+  max-width: math.div(530px, $burger-parallaxed-max-width) * 100%;
+  transform: translate(10%, 10%) rotate(-16deg);
+}
+
+.component-mayo-1 {
+  max-width: math.div(444px, $burger-parallaxed-max-width) * 100%;
+  margin-bottom: -11%;
+  transform: translate(10%, 10%) rotate(-16deg);
+}
+.component-salad-1 {
+  max-width: math.div(515px, $burger-parallaxed-max-width) * 100%;
+  margin-bottom: -11%;
+  transform: translate(4%, 0);
+}
+
+.component-cheese {
+  max-width: math.div(510px, $burger-parallaxed-max-width) * 100%;
+  margin-bottom: -16%;
+  transform: translate(4%, -39%) rotate(-16deg);
+}
+
+.component-cutlet {
+  max-width: math.div(433px, $burger-parallaxed-max-width) * 100%;
+  margin-bottom: -8%;
+  transform: translate(3%, -100%) rotate(-5deg);
+}
+
+.component-onion-1 {
+  max-width: math.div(176px, $burger-parallaxed-max-width) * 100%;
+  margin: 0 0 -17% -46%;
+  transform: translate(4%, -40%) rotate(21deg);
+}
+
+.component-onion-2 {
+  max-width: math.div(111px, $burger-parallaxed-max-width) * 100%;
+  margin: 0 0 -12% 1%;
+  transform: translate(-143%, -212%) rotate(-33deg);
+}
+
+.component-onion-3 {
+  max-width: math.div(204px, $burger-parallaxed-max-width) * 100%;
+  margin: 0 0 -11% -24%;
+  transform: translate(61%, -53%) rotate(-28deg);
+}
+
+.component-onion-4 {
+  max-width: math.div(204px, $burger-parallaxed-max-width) * 100%;
+  margin: 0 0 -16% 32%;
+  transform: translate(-42%, -67%) rotate(28deg);
+}
+
+.component-onion-5 {
+  max-width: math.div(75px, $burger-parallaxed-max-width) * 100%;
+  margin: 0 0 -13% 56%;
+  transform: translate(-46%, -302%) rotate(31deg);
+}
+
+.component-onion-6 {
+  max-width: math.div(111px, $burger-parallaxed-max-width) * 100%;
+  margin: 0 0 -6% 41%;
+  transform: translate(125%, -261%) rotate(15deg);
+}
+
+.component-tomato-1 {
+  max-width: math.div(84px, $burger-parallaxed-max-width) * 100%;
+  margin: 0 0 -4% -49%;
+  transform: translate(-167%, -300%) rotate(34deg);
+}
+
+.component-tomato-2 {
+  max-width: math.div(164px, $burger-parallaxed-max-width) * 100%;
+  margin: 0 0 -8% -23%;
+  transform: translate(-33%, -275%) rotate(-12deg);
+}
+
+.component-tomato-3 {
+  max-width: math.div(164px, $burger-parallaxed-max-width) * 100%;
+  margin: 0 0 -11% 42%;
+  transform: translate(-98%, -198%) rotate(12deg);
+}
+
+.component-tomato-4 {
+  max-width: math.div(169px, $burger-parallaxed-max-width) * 100%;
+  margin: 0 0 -10% 9%;
+  transform: translate(47%, -223%) rotate(20deg);
+}
+
+.component-cucumber-1 {
+  max-width: math.div(169px, $burger-parallaxed-max-width) * 100%;
+  margin: 0 0 -12% -46%;
+  transform: translate(41%, -146%) rotate(22deg);
+}
+
+.component-cucumber-2 {
+  max-width: math.div(169px, $burger-parallaxed-max-width) * 100%;
+  margin: 0 0 -20% 9%;
+  transform: translate(-18%, -150%) rotate(31deg);
+}
+
+.component-cucumber-3 {
+  max-width: math.div(169px, $burger-parallaxed-max-width) * 100%;
+  margin: 0 0 -19% -22%;
+  transform: translate(85%, -119%) rotate(-10deg);
+}
+
+.component-cucumber-4 {
+  max-width: math.div(169px, $burger-parallaxed-max-width) * 100%;
+  margin: 0 0 -25% 38%;
+  transform: translate(25%, -111%) rotate(40deg);
+}
+
+.component-salad-2 {
+  max-width: math.div(515px, $burger-parallaxed-max-width) * 100%;
+  margin-bottom: -15%;
+  transform: translate(-3%, -190%) rotate(29deg);
+}
+
+.component-mayo-2 {
+  max-width: math.div(444px, $burger-parallaxed-max-width) * 100%;
+  margin-bottom: -12%;
+  transform: translate(7%, -226%) rotate(25deg);
+}
+
+.component-bun-top {
+  max-width: math.div(512px, $burger-parallaxed-max-width) * 100%;
+  margin-bottom: -11%;
+  transform: translate(11%, -98%) rotate(26deg);
+}
+
+// Burger constructor
+.burger-container {
+  max-width: $burger-max-width;
+  margin: 0 auto;
+  position: relative;
+  text-align: center;
+}
+
+.burger-space-former {
+  padding-top: math.div(595px, $burger-max-width) * 100%;
+  margin-bottom: rem(18);
+}
+
+.burger {
+  &::before {
+    width: math.div(598px, $burger-max-width) * 100%;
+    padding-top: math.div(595px, $burger-max-width) * 100%;
+    background-image: url("images/svg/burger-background-2.svg");
+  }
+
+  &__tooltip {
+    display: none;
+    position: absolute;
+    top: 40%;
+    right: 0;
+    z-index: 1;
+  }
+}
+
+.ingredient {
+  width: 100%;
+  animation: ingredient-animation $trans-dur * 5 ease-in-out;
+
+  .modal &,
+  &.bun-bottom {
+    animation: none;
+  }
+
+  &__container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+  }
+
+  &__img {
+    position: relative;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+}
+
+@keyframes ingredient-animation {
+  0% {
+    transform: translate(rem(-30), rem(-20));
+    opacity: 0;
+  }
+  50% {
+    transform: translate(rem(30), rem(-10)) rotate(-5deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(0, 0) rotate(0);
+  }
+}
+
+.bun-top {
+  max-width: math.div(512px, $burger-max-width) * 100%;
+  margin-bottom: math.div(-74px, $burger-max-width) * 100%;
+}
+
+.bun-bottom {
+  max-width: math.div(530px, $burger-max-width) * 100%;
+  margin-top: math.div(-17px, $burger-max-width) * 100%;
+}
+
+.cutlet {
+  max-width: math.div(433px, $burger-max-width) * 100%;
+  margin-top: -41px;
+  margin-top: math.div(-41px, $burger-max-width) * 100%;
+  margin-bottom: math.div(-56px, $burger-max-width) * 100%;
+}
+
+.mayo {
+  max-width: math.div(444px, $burger-max-width) * 100%;
+  margin-bottom: math.div(-72px, $burger-max-width) * 100%;
+}
+
+.onion {
+  max-width: math.div(481px, $burger-max-width) * 100%;
+  margin-top: math.div(-48px, $burger-max-width) * 100%;
+  margin-bottom: math.div(-108px, $burger-max-width) * 100%;
+
+  &__container {
+    padding-left: math.div(481 - 285, 481) * 100%;
+  }
+
+  &__img-1 {
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: rotate(5deg);
+    width: math.div(285, 481) * 100%;
+  }
+}
+
+.tomato {
+  max-width: math.div(465px, $burger-max-width) * 100%;
+  margin-top: math.div(-22px, $burger-max-width) * 100%;
+  margin-bottom: math.div(-94px, $burger-max-width) * 100%;
+
+  &__container {
+    padding-left: math.div(465 - 269, 465) * 100%;
+  }
+
+  &__img-1 {
+    position: absolute;
+    left: 0;
+    top: -5%;
+    transform: rotate(-6deg);
+    width: math.div(269, 465) * 100%;
+  }
+}
+
+.cucumber {
+  max-width: math.div(489px, $burger-max-width) * 100%;
+  margin-top: math.div(-52px, $burger-max-width) * 100%;
+  margin-bottom: math.div(-94px, $burger-max-width) * 100%;
+
+  &__container {
+    padding-left: math.div(489 - 206, 481) * 100%;
+  }
+
+  &__img-1,
+  &__img-2,
+  &__img-3 {
+    position: absolute;
+    width: math.div(206, 489) * 100%;
+  }
+
+  &__img-1 {
+    top: 4%;
+    left: 15%;
+    transform: rotate(11deg);
+  }
+
+  &__img-2 {
+    top: -11%;
+    left: 0;
+    transform: rotate(-1deg);
+  }
+
+  &__img-3 {
+    left: 35%;
+    transform: rotate(17deg);
+  }
+}
+
+.cheese {
+  max-width: math.div(510px, $burger-max-width) * 100%;
+  margin-top: math.div(5px, $burger-max-width) * 100%;
+  margin-bottom: math.div(-95px, $burger-max-width) * 100%;
+}
+
+.salad {
+  max-width: math.div(515px, $burger-max-width) * 100%;
+  margin-top: math.div(-38px, $burger-max-width) * 100%;
+  margin-bottom: math.div(-82px, $burger-max-width) * 100%;
+}
+
+.bun-middle {
+  max-width: math.div(520px, $burger-max-width) * 100%;
+  margin-top: math.div(-16px, $burger-max-width) * 100%;
+  margin-bottom: math.div(-80px, $burger-max-width) * 100%;
+}

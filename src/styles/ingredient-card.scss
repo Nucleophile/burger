@@ -1,0 +1,135 @@
+.ingredient-card {
+  position: relative;
+  width: rem(140);
+  flex-shrink: 0;
+  text-align: center;
+
+  &__content {
+    padding: rem(24) rem(10);
+    border: rem(1) solid $grey-1;
+    border-radius: rem(20);
+    background: #fff;
+
+    &:hover {
+      padding: rem(40) rem(10);
+      border: none;
+      z-index: 1;
+
+      @include media(from_tablet) {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        box-shadow: 0px rem(2) rem(2) 0px #00000003, 0px rem(8) rem(6) 0px #00000004, 0px rem(19) rem(14) 0px #00000005, 0px rem(62) rem(46) 0px #00000008;
+      }
+
+      @include media(mobile) {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        box-shadow: 0px -20px 50px 0px #0000001A;
+      }
+
+      .ingredient-card__picture {
+        transform: scale(1.5);
+      }
+
+      .ingredient-card__name {
+        font-size: rem(20);
+        line-height: rem(28);
+        font-weight: 700;
+      }
+
+      .ingredient-card__info {
+        display: flex;
+      }
+    }
+  }
+
+  &__picture {
+    position: relative;
+    height: rem(60);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: rem(12);
+  }
+
+  &__name {
+    font-size: rem(14);
+    line-height: rem(18);
+    font-weight: 500;
+    margin-bottom: rem(12);
+  }
+
+  &__controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__control {
+    border: none;
+    cursor: pointer;
+    &:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+  }
+
+  &__qty {
+    font-size: rem(16);
+    line-height: rem(19);
+    min-width: rem(32);
+    text-align: center;
+    margin: 0 rem(4);
+  }
+
+  &__info {
+    display: none;
+    justify-content: center;
+    gap: rem(4);
+    margin-bottom: rem(24);
+  }
+}
+
+.cutlet-card__img {
+  max-width: rem(93);
+}
+
+.mayo-card__img {
+  max-width: rem(95);
+}
+
+.onion-card__img {
+  max-width: rem(77);
+}
+
+.tomato-card__img {
+  max-width: rem(62);
+}
+.tomato-card__img-1 {
+  max-width: rem(62);
+}
+.tomato-card__img-2 {
+  max-width: rem(42);
+}
+
+.cucumber-card__img {
+  max-width: rem(51);
+}
+
+.cheese-card__img {
+  max-width: rem(96);
+}
+
+.salad-card__img {
+  max-width: rem(92);
+}
+
+.bun-card__img {
+  max-width: rem(100);
+}
