@@ -51,6 +51,25 @@ const burgerDOMEl = document.getElementById("burger");
 const orderBtnDOMEl = document.getElementById("order-btn");
 const priceBlockDOMEl = document.getElementById("price-block");
 const burger = new Burger(burgerDOMEl, orderBtnDOMEl, ingredients);
+const warningDOMEl = document.getElementById("are-you-sure");
+const burgerObserver = new IntersectionObserver(
+  (entries) => {
+    if (!entries[0].isIntersecting) {
+      warningDOMEl.style.display = "block";
+    } else {
+      warningDOMEl.style.display = "none";
+    }
+  },
+  { threshold: 1 }
+);
+
+function checkBurgerOverflow() {
+  burgerObserver.observe(burgerDOMEl);
+  setTimeout(() => {
+    burgerObserver.unobserve(burgerDOMEl);
+  }, 100);
+}
+
 const ingredientCards = [];
 const calculatorsDefaults = {
   calories: ingredients.bun.calories,
@@ -74,7 +93,7 @@ for (let ingredientName in ingredients) {
   const addIngredientBtnDOMEl = document.getElementById(`add-${ingredientName}-btn`);
   const removeIngredientBtnDOMEl = document.getElementById(`remove-${ingredientName}-btn`);
   const ingredient = new Ingredient(ingredientName, ingredients[ingredientName]);
-  const ingredientCard = new IngredientCard(ingredient, addIngredientBtnDOMEl, burger, calculators);
+  const ingredientCard = new IngredientCard(ingredientName, addIngredientBtnDOMEl);
   ingredientCards.push(ingredientCard);
 
   addIngredientBtnDOMEl.addEventListener("click", () => {
@@ -88,6 +107,9 @@ for (let ingredientName in ingredients) {
         ingredientCard.addBtnDOMEl.setAttribute("disabled", "");
       });
     }
+
+    burger.addIngredient(ingredient);
+    checkBurgerOverflow();
 
     calculators.forEach((calculator) => {
       const calculatorValue = calculator.add(ingredient.characteristics[calculator.name]);
@@ -108,6 +130,9 @@ for (let ingredientName in ingredients) {
         ingredientCard.addBtnDOMEl.removeAttribute("disabled");
       });
     }
+
+    burger.removeIngredient(ingredient);
+    checkBurgerOverflow();
 
     calculators.forEach((calculator) => {
       const calculatorValue = calculator.substract(ingredient.characteristics[calculator.name]);

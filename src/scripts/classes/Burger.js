@@ -7,23 +7,6 @@ export default class Burger {
     };
     this.orderBtnDOMEl = orderBtnDOMEl;
     this.ingredientsQty = 0;
-    this.warningDOMEl = document.getElementById("are-you-sure");
-    this.observer = new IntersectionObserver(
-      (entries) => {
-        if (!entries[0].isIntersecting) {
-          this.warningDOMEl.style.display = "block";
-        } else {
-          this.warningDOMEl.style.display = "none";
-        }
-      },
-      { threshold: 1 }
-    );
-    this.checkOverflow = () => {
-      this.observer.observe(this.burgerDOMEl);
-      setTimeout(() => {
-        this.observer.unobserve(this.burgerDOMEl);
-      }, 10);
-    };
   }
 
   addIngredient(ingredient) {
@@ -35,13 +18,11 @@ export default class Burger {
       this.orderBtnDOMEl.removeAttribute("disabled");
     }
 
-    this.checkOverflow();
     this.ingredientsQty++;
   }
 
   removeIngredient(ingredient) {
     this.composition[ingredient.name].pop().remove();
-    this.checkOverflow();
     this.ingredientsQty--;
 
     if (this.ingredientsQty === 0) {
