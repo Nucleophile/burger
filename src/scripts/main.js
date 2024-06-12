@@ -4,7 +4,7 @@ import Burger from "./classes/Burger.js";
 import Ingredient from "./classes/Ingredient.js";
 import IngredientCard from "./classes/IngredientCard.js";
 import Calculator from "./classes/Calculator.js";
-import { ingredientsCharacteristics } from "./ingredientsCharacteristics.js";
+import { ingredients } from "./ingredients.js";
 
 // Moving .make-burger block between tabs
 const makeBurgerSection = document.getElementById("make-burger");
@@ -19,10 +19,10 @@ document.querySelectorAll('button[data-bs-toggle="tab"]').forEach((tab) => {
 const tabs = {
   home: new Tab(document.getElementById("home-tab-btn")),
   constructor: new Tab(document.getElementById("make-burger-tab-btn"))
-}
+};
 const otherTabsButtons = document.querySelectorAll("[data-tab]");
 
-otherTabsButtons.forEach(otherTabsButton => {
+otherTabsButtons.forEach((otherTabsButton) => {
   otherTabsButton.addEventListener("click", () => {
     tabs[otherTabsButton.dataset.tab].show();
   });
@@ -49,56 +49,75 @@ document.addEventListener("mousemove", (e) => {
 // Burger building logic
 const burgerDOMEl = document.getElementById("burger");
 const orderBtnDOMEl = document.getElementById("order-btn");
-const ingredients = Object.keys(ingredientsCharacteristics);
+const priceBlockDOMEl = document.getElementById("price-block");
 const burger = new Burger(burgerDOMEl, orderBtnDOMEl, ingredients);
 const ingredientCards = [];
 const calculatorsDefaults = {
-  calories: ingredientsCharacteristics.bun.calories,
-  time: ingredientsCharacteristics.bun.time,
-  mass: ingredientsCharacteristics.bun.mass,
-  price: ingredientsCharacteristics.bun.price
+  calories: ingredients.bun.calories,
+  time: ingredients.bun.time,
+  mass: ingredients.bun.mass,
+  price: ingredients.bun.price
 };
 const calculators = [];
 
-Object.keys(calculatorsDefaults).forEach((calculatorName) => {
-  const callbacks = {};
+for (let calculatorName in calculatorsDefaults) {
   let precision = 0;
 
   if (calculatorName === "price") {
-    const priceBlockDOMEl = document.getElementById("price-block");
-    const callback = () => {
-      priceBlockDOMEl.classList.toggle("gift-winned");
-    };
-    Object.assign(callbacks, {
-      triggerValue: 5,
-      callbackAbove: callback,
-      callbackUnder: callback
-    });
     precision = 2;
   }
 
-  calculators.push(new Calculator(calculatorName, calculatorsDefaults[calculatorName], precision, callbacks));
-});
+  calculators.push(new Calculator(calculatorName, calculatorsDefaults[calculatorName], precision));
+}
 
-ingredients.forEach((ingredientName) => {
-  const ingredient = new Ingredient(ingredientName, ingredientsCharacteristics[ingredientName]);
-  let addIngredientCallback;
-  let removeIngredientCallback;
+for (let ingredientName in ingredients) {
+  const addIngredientBtnDOMEl = document.getElementById(`add-${ingredientName}-btn`);
+  const removeIngredientBtnDOMEl = document.getElementById(`remove-${ingredientName}-btn`);
+  const ingredient = new Ingredient(ingredientName, ingredients[ingredientName]);
+  const ingredientCard = new IngredientCard(ingredient, addIngredientBtnDOMEl, burger, calculators);
+  ingredientCards.push(ingredientCard);
 
-  if (ingredientName === "bun") {
-    addIngredientCallback = () => {
+  addIngredientBtnDOMEl.addEventListener("click", () => {
+    const currentQty = ingredientCard.addIngredient();
+
+    if (currentQty === 1) removeIngredientBtnDOMEl.removeAttribute("disabled");
+
+    if (ingredientName === "bun") {
+      // Nothing can be added after top bun
       ingredientCards.forEach((ingredientCard) => {
-        ingredientCard.addBtnDOMel.setAttribute("disabled", "");
+        ingredientCard.addBtnDOMEl.setAttribute("disabled", "");
       });
-    };
-    removeIngredientCallback = () => {
+    }
+
+    calculators.forEach((calculator) => {
+      const calculatorValue = calculator.add(ingredient.characteristics[calculator.name]);
+
+      if (calculator.name === "price" && calculatorValue > 5) {
+        priceBlockDOMEl.classList.add("gift-winned");
+      }
+    });
+  });
+
+  removeIngredientBtnDOMEl.addEventListener("click", () => {
+    const currentQty = ingredientCard.removeIngredient();
+
+    if (currentQty === 0) removeIngredientBtnDOMEl.setAttribute("disabled", "");
+
+    if (ingredientName === "bun") {
       ingredientCards.forEach((ingredientCard) => {
-        ingredientCard.addBtnDOMel.removeAttribute("disabled");
+        ingredientCard.addBtnDOMEl.removeAttribute("disabled");
       });
-    };
-  }
-  ingredientCards.push(new IngredientCard(ingredient, burger, calculators, addIngredientCallback, removeIngredientCallback));
-});
+    }
+
+    calculators.forEach((calculator) => {
+      const calculatorValue = calculator.substract(ingredient.characteristics[calculator.name]);
+
+      if (calculator.name === "price" && calculatorValue <= 5) {
+        priceBlockDOMEl.classList.remove("gift-winned");
+      }
+    });
+  });
+}
 
 // Modals logic
 const modalOrderDOMEl = document.getElementById("modal-order");

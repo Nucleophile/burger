@@ -1,10 +1,10 @@
 export default class Burger {
-  constructor(burgerDOMEl, orderBtnDOMEl, ingredientsList) {
+  constructor(burgerDOMEl, orderBtnDOMEl, ingredients) {
     this.burgerDOMEl = burgerDOMEl;
     this.composition = {};
-    ingredientsList.forEach((ingredient) => {
+    for (let ingredient in ingredients) {
       this.composition[ingredient] = [];
-    });
+    };
     this.orderBtnDOMEl = orderBtnDOMEl;
     this.ingredientsQty = 0;
     this.warningDOMEl = document.getElementById("are-you-sure");

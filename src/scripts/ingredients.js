@@ -1,4 +1,4 @@
-export const ingredientsCharacteristics = {
+export const ingredients = {
   cutlet: {
     calories: 12,
     time: 6,
