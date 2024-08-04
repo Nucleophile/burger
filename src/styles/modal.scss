@@ -20,7 +20,7 @@
     }
     &-content {
       @include media(mobile) {
-        background-image: url(./images/svg/burger-background-1.svg);
+        background-image: url("./images/svg/burger-background-1.svg?inline");
         background-position: center;
         background-size: 90%;
         background-repeat: no-repeat;

@@ -46,7 +46,7 @@
     content: "";
     position: absolute;
     width: 100%;
-    background: url("images/svg/burger-background-1.svg") center/contain no-repeat;
+    background: url("images/svg/burger-background-1.svg?inline") center/contain no-repeat;
   }
 }
 
@@ -256,7 +256,7 @@
   &::before {
     width: math.div(598px, $burger-max-width) * 100%;
     padding-top: math.div(595px, $burger-max-width) * 100%;
-    background-image: url("images/svg/burger-background-2.svg");
+    background-image: url("images/svg/burger-background-2.svg?inline");
   }
 
   &__tooltip {

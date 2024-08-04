@@ -4,15 +4,15 @@
   border-radius: $icon-size;
 
   &--calorie {
-    background: $calorie url("images/svg/calorie.svg") no-repeat center;
+    background: $calorie url("images/svg/calorie.svg?inline") no-repeat center;
   }
 
   &--time {
-    background: $time url("images/svg/time.svg") no-repeat center;
+    background: $time url("images/svg/time.svg?inline") no-repeat center;
   }
 
   &--mass {
-    background: $mass url("images/svg/mass.svg") no-repeat center;
+    background: $mass url("images/svg/mass.svg?inline") no-repeat center;
   }
 
   &--sm {
