@@ -19,12 +19,14 @@ $grey-1: #f0f7fa;
 $grey-2: #f5f5ff;
 $grey-3: #676D77;
 $grey-4: #949ba6;
+$grey-5: #f0f0f9;
 $mob-menu-btn: #2e3a59;
 $controls: $grey-2;
+$controls-hover: $grey-5;
 
 // Various dimensions
 $grid-gutter: rem(24);
-$ingredient-cards-gutter: rem(100);
+$ingredient-cards-gutter: rem(105);
 $max-content: rem(1480);
 $max-container: $max-content + $grid-gutter * 2;
 $header-max-content: rem(1856);

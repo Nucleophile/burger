@@ -26,7 +26,7 @@
   &--add {
     position: relative;
     background: $controls;
-    transition: opacity $trans-dur;
+    transition: opacity $trans-dur, background-color $trans-dur;
 
     &::before {
       content: "";
@@ -38,6 +38,10 @@
       margin-top: rem(-1);
       margin-left: rem(-5);
       background: $grey-4;
+    }
+
+    &:hover {
+      background: $controls-hover;
     }
   }
 
