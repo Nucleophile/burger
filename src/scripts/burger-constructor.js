@@ -7,7 +7,7 @@ import { ingredients } from "./ingredients.js";
 const burgerDOMEl = document.getElementById("burger");
 const orderBtnDOMEl = document.getElementById("order-btn");
 const priceBlockDOMEl = document.getElementById("price-block");
-const burger = new Burger(burgerDOMEl, orderBtnDOMEl, ingredients);
+const burger = new Burger(burgerDOMEl, ingredients);
 const warningDOMEl = document.getElementById("are-you-sure");
 const burgerObserver = new IntersectionObserver(
   (entries) => {
@@ -63,6 +63,9 @@ for (let ingredientName in ingredients) {
       ingredientCards.forEach((ingredientCard) => {
         ingredientCard.addBtnDOMEl.setAttribute("disabled", "");
       });
+
+      // Now we can order
+      orderBtnDOMEl.removeAttribute("disabled");
     }
 
     burger.addIngredient(ingredient);
@@ -83,9 +86,13 @@ for (let ingredientName in ingredients) {
     if (currentQty === 0) removeIngredientBtnDOMEl.setAttribute("disabled", "");
 
     if (ingredientName === "bun") {
+      // Now use can add any ingredient
       ingredientCards.forEach((ingredientCard) => {
         ingredientCard.addBtnDOMEl.removeAttribute("disabled");
       });
+
+      // Now we can't order
+      orderBtnDOMEl.setAttribute("disabled", "");
     }
 
     burger.removeIngredient(ingredient);
