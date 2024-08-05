@@ -1,8 +1,5 @@
 .header {
   padding: $header-padding 0;
-  position: sticky;
-  top: 0;
-  z-index: 3;
   background: #fff;
 
   &__content,
@@ -13,6 +10,10 @@
   }
 
   @include media(to_laptop) {
+    position: sticky;
+    top: 0;
+    z-index: 3;
+
     &__content {
       justify-content: space-between;
     }
