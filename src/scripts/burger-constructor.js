@@ -10,22 +10,17 @@ const priceBlockDOMEl = document.getElementById("price-block");
 const burger = new Burger(burgerDOMEl, ingredients);
 const warningDOMEl = document.getElementById("are-you-sure");
 const burgerObserver = new IntersectionObserver(
-  (entries) => {
-    if (!entries[0].isIntersecting) {
+  // Showing and hiding "Are you sure?" pop-up
+  ([entry]) => {
+    if (!entry.isIntersecting) {
       warningDOMEl.style.display = "block";
     } else {
       warningDOMEl.style.display = "none";
     }
+    burgerObserver.unobserve(burgerDOMEl);
   },
   { threshold: 1 }
 );
-
-function checkBurgerOverflow() {
-  burgerObserver.observe(burgerDOMEl);
-  setTimeout(() => {
-    burgerObserver.unobserve(burgerDOMEl);
-  }, 100);
-}
 
 const ingredientCards = [];
 const calculatorsDefaults = {
@@ -69,7 +64,7 @@ for (let ingredientName in ingredients) {
     }
 
     burger.addIngredient(ingredient);
-    checkBurgerOverflow();
+    burgerObserver.observe(burgerDOMEl);
 
     calculators.forEach((calculator) => {
       const calculatorValue = calculator.add(ingredient.characteristics[calculator.name]);
@@ -96,7 +91,7 @@ for (let ingredientName in ingredients) {
     }
 
     burger.removeIngredient(ingredient);
-    checkBurgerOverflow();
+    burgerObserver.observe(burgerDOMEl);
 
     calculators.forEach((calculator) => {
       const calculatorValue = calculator.substract(ingredient.characteristics[calculator.name]);
